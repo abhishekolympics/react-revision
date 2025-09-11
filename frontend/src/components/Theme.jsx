@@ -1,18 +1,46 @@
-import { useContextSelector } from 'use-context-selector';
-import { CountContext } from '../contexts/CountContext';
-import { useEffect } from 'react';
+//using useContext and useReducer
+
+// import { useContextSelector } from 'use-context-selector';
+// import { CountContext } from '../contexts/CountContext';
+// import { useEffect } from 'react';
+
+// export default function Theme() {
+//     const theme = useContextSelector(CountContext, v => v.state.theme);
+//     const dispatch = useContextSelector(CountContext, v => v.dispatch);
+
+//     useEffect(()=> {
+//         console.log("Theme got re-rendered.");
+//     },[theme])
+//     return (
+//         <>
+//             <h1>{theme}</h1>
+//             <button onClick={() => dispatch({type: "toggleTheme"})}>Toggle Theme</button>
+//         </>
+//     )
+// }
+
+
+//using zustand
+
+import { useEffect  } from "react";
+import useStore from '../store';
 
 export default function Theme() {
-    const theme = useContextSelector(CountContext, v => v.state.theme);
-    const dispatch = useContextSelector(CountContext, v => v.dispatch);
+    const theme = useStore((s) => s.theme );
+    const toggle = useStore((s) => s.toggleTheme );
 
-    useEffect(()=> {
-        console.log("Theme got re-rendered.");
-    },[theme])
+    useEffect(() => {
+        console.log("Theme re-rendered");
+    }, [theme])
+
     return (
         <>
-            <h1>{theme}</h1>
-            <button onClick={() => dispatch({type: "toggleTheme"})}>Toggle Theme</button>
+            <h1>
+                {theme}
+            </h1>
+            <button onClick={toggle}>
+                Toggle Theme
+            </button>
         </>
     )
 }
