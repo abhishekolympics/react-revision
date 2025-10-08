@@ -22,12 +22,39 @@
 
 //using zustand
 
+// import { useEffect  } from "react";
+// import useStore from '../store';
+
+// export default function Theme() {
+//     const theme = useStore((s) => s.theme );
+//     const toggle = useStore((s) => s.toggleTheme );
+
+//     useEffect(() => {
+//         console.log("Theme re-rendered");
+//     }, [theme])
+
+//     return (
+//         <>
+//             <h1>
+//                 {theme}
+//             </h1>
+//             <button onClick={toggle}>
+//                 Toggle Theme
+//             </button>
+//         </>
+//     )
+// }
+
+
+
+//using jotai
 import { useEffect  } from "react";
-import useStore from '../store';
+import { themeAtom } from '../store/atoms';
+import { useAtom } from 'jotai';
 
 export default function Theme() {
-    const theme = useStore((s) => s.theme );
-    const toggle = useStore((s) => s.toggleTheme );
+
+    const [theme, setTheme] = useAtom(themeAtom);
 
     useEffect(() => {
         console.log("Theme re-rendered");
@@ -38,7 +65,7 @@ export default function Theme() {
             <h1>
                 {theme}
             </h1>
-            <button onClick={toggle}>
+            <button onClick={() => setTheme((theme) => theme!=='light'?'light':'dark')}>
                 Toggle Theme
             </button>
         </>

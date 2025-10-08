@@ -27,13 +27,44 @@
 
 //using zustand
 
+// import { useEffect } from "react";
+// import useStore from '../store';
+
+// export default function Counter() {
+//     const count = useStore((s) => s.count);
+//     const increment = useStore((s) => s.increment);
+//     const decrement = useStore((s) => s.decrement);
+
+//     useEffect(() => {
+//         console.log("counter re-rendered");
+//     },[count])
+    
+//     return (
+//         <>
+//             <h1>
+//                 {count}
+//             </h1>
+//             <button onClick={increment}>
+//                 Increment
+//             </button>
+//             <button onClick={decrement}>
+//                 Decrement
+//             </button>
+//         </>
+//     )
+// }
+
+
+// using jotai
 import { useEffect } from "react";
-import useStore from '../store';
+import { useAtom } from "jotai";
+import { countAtom, doubleAtom, IncrementCountAtom } from '../store/atoms';
 
 export default function Counter() {
-    const count = useStore((s) => s.count);
-    const increment = useStore((s) => s.increment);
-    const decrement = useStore((s) => s.decrement);
+
+    const [count, setCount] = useAtom(countAtom);
+    const [double] = useAtom(doubleAtom);
+    const [,increment] = useAtom(IncrementCountAtom);
 
     useEffect(() => {
         console.log("counter re-rendered");
@@ -44,11 +75,17 @@ export default function Counter() {
             <h1>
                 {count}
             </h1>
-            <button onClick={increment}>
+            <button onClick={() => setCount(c => c + 1 )}>
                 Increment
             </button>
-            <button onClick={decrement}>
+            <button onClick={() => setCount(c => c - 1 )}>
                 Decrement
+            </button>
+            <div>
+                {double}
+            </div>
+            <button onClick={() => increment(5)}>
+                Increment using writable derived Count Atom
             </button>
         </>
     )

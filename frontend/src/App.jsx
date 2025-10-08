@@ -75,28 +75,65 @@
 
 
 
-
+//using zustand
 // frontend/src/App.jsx
+// import "./App.css";
+// import WithoutShallow from "./components/WithoutShallow";
+// import WithShallow from "./components/WithShallow";
+// import UpdateUser from "./components/UpdateUser";
+
+// export default function App() {
+//   return (
+//     <div style={{ padding: 20, fontFamily: "system-ui, Arial" }}>
+//       <h2>Zustand: shallow vs no-shallow demo</h2>
+
+//       <section style={{ border: "1px dashed #999", padding: 12, marginBottom: 20 }}>
+//         <WithoutShallow />
+//       </section>
+
+//       <section style={{ border: "1px dashed #999", padding: 12, marginBottom: 20 }}>
+//         <UpdateUser />
+//       </section>
+
+//       <section style={{ border: "1px dashed #999", padding: 12 }}>
+//         <WithShallow />
+//       </section>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+// using jotai
+
 import "./App.css";
-import WithoutShallow from "./components/WithoutShallow";
-import WithShallow from "./components/WithShallow";
-import UpdateUser from "./components/UpdateUser";
+import Counter from './components/Counter';
+import Theme from './components/Theme';
+import Reset from './components/Reset';
 
 export default function App() {
   return (
     <div style={{ padding: 20, fontFamily: "system-ui, Arial" }}>
-      <h2>Zustand: shallow vs no-shallow demo</h2>
+      <h2>Jotai: using Atoms</h2>
 
       <section style={{ border: "1px dashed #999", padding: 12, marginBottom: 20 }}>
-        <WithoutShallow />
+        <Counter />
       </section>
 
       <section style={{ border: "1px dashed #999", padding: 12, marginBottom: 20 }}>
-        <UpdateUser />
+        <Theme />
       </section>
 
       <section style={{ border: "1px dashed #999", padding: 12 }}>
-        <WithShallow />
+        <Reset />
       </section>
     </div>
   );
