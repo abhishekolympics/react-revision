@@ -56,37 +56,56 @@
 
 
 // using jotai
-import { useEffect } from "react";
-import { useAtom } from "jotai";
-import { countAtom, doubleAtom, IncrementCountAtom } from '../store/atoms';
+// import { useEffect } from "react";
+// import { useAtom } from "jotai";
+// import { countAtom, doubleAtom, IncrementCountAtom } from '../store/atoms';
+
+// export default function Counter() {
+
+//     const [count, setCount] = useAtom(countAtom);
+//     const [double] = useAtom(doubleAtom);
+//     const [,increment] = useAtom(IncrementCountAtom);
+
+//     useEffect(() => {
+//         console.log("counter re-rendered");
+//     },[count])
+    
+//     return (
+//         <>
+//             <h1>
+//                 {count}
+//             </h1>
+//             <button onClick={() => setCount(c => c + 1 )}>
+//                 Increment
+//             </button>
+//             <button onClick={() => setCount(c => c - 1 )}>
+//                 Decrement
+//             </button>
+//             <div>
+//                 {double}
+//             </div>
+//             <button onClick={() => increment(5)}>
+//                 Increment using writable derived Count Atom
+//             </button>
+//         </>
+//     )
+// }
+
+
+//Finally, using Redux
+
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement } from '../store/counterSlice';
 
 export default function Counter() {
+    const count = useSelector((state) => state.counter.value);
+    const dispatch = useDispatch();
 
-    const [count, setCount] = useAtom(countAtom);
-    const [double] = useAtom(doubleAtom);
-    const [,increment] = useAtom(IncrementCountAtom);
-
-    useEffect(() => {
-        console.log("counter re-rendered");
-    },[count])
-    
     return (
         <>
-            <h1>
-                {count}
-            </h1>
-            <button onClick={() => setCount(c => c + 1 )}>
-                Increment
-            </button>
-            <button onClick={() => setCount(c => c - 1 )}>
-                Decrement
-            </button>
-            <div>
-                {double}
-            </div>
-            <button onClick={() => increment(5)}>
-                Increment using writable derived Count Atom
-            </button>
+            <h1>{count}</h1>
+            <button onClick={() => dispatch(increment())}>Increment</button>
+            <button onClick={() => dispatch(decrement())}>Decrement</button>
         </>
     )
 }

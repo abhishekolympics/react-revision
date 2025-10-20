@@ -18,24 +18,38 @@
 // export default useStore;
 
 
+//below store is for using store for zustand devtools
+
 // frontend/src/store.js
-import { create } from "zustand";
-import { devtools } from "zustand/middleware";
+// import { create } from "zustand";
+// import { devtools } from "zustand/middleware";
 
-const useStore = create(
-  devtools((set) => ({
-    // state
-    count: 0,
-    theme: "light",
-    username: "guest",
+// const useStore = create(
+//   devtools((set) => ({
+//     // state
+//     count: 0,
+//     theme: "light",
+//     username: "guest",
 
-    // actions (with optional action labels for DevTools)
-    setUsername: (name) => set(() => ({ username: name }), false, "SET_USERNAME"),
-    increment: () => set((s) => ({ count: s.count + 1 }), false, "INCREMENT"),
-    decrement: () => set((s) => ({ count: s.count - 1 }), false, "DECREMENT"),
-    toggleTheme: () => set((s) => ({ theme: s.theme === "light" ? "dark" : "light" }), false, "TOGGLE_THEME"),
-    reset: () => set(() => ({ count: 0, theme: "light" }), false, "RESET"),
-  }))
-);
+//     // actions (with optional action labels for DevTools)
+//     setUsername: (name) => set(() => ({ username: name }), false, "SET_USERNAME"),
+//     increment: () => set((s) => ({ count: s.count + 1 }), false, "INCREMENT"),
+//     decrement: () => set((s) => ({ count: s.count - 1 }), false, "DECREMENT"),
+//     toggleTheme: () => set((s) => ({ theme: s.theme === "light" ? "dark" : "light" }), false, "TOGGLE_THEME"),
+//     reset: () => set(() => ({ count: 0, theme: "light" }), false, "RESET"),
+//   }))
+// );
 
-export default useStore;
+// export default useStore;
+
+
+//below store is for redux
+
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './counterSlice';
+
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+})
