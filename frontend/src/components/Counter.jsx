@@ -94,18 +94,38 @@
 
 //Finally, using Redux
 
+// import { useSelector, useDispatch } from 'react-redux';
+// import { increment, decrement } from '../store/counterSlice';
+
+// export default function Counter() {
+//     const count = useSelector((state) => state.counter.value);
+//     const dispatch = useDispatch();
+
+//     return (
+//         <>
+//             <h1>{count}</h1>
+//             <button onClick={() => dispatch(increment())}>Increment</button>
+//             <button onClick={() => dispatch(decrement())}>Decrement</button>
+//         </>
+//     )
+// }
+
+
+//Revising Redux
+
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../store/counterSlice';
+import { increment, decrement, addBy } from '../store/slices/counterSlice';
 
 export default function Counter() {
     const count = useSelector((state) => state.counter.value);
     const dispatch = useDispatch();
 
     return (
-        <>
-            <h1>{count}</h1>
-            <button onClick={() => dispatch(increment())}>Increment</button>
-            <button onClick={() => dispatch(decrement())}>Decrement</button>
-        </>
-    )
+        <div>
+            <h2>Count: {count}</h2>
+            <button onClick={() => dispatch(increment())}>+1</button>
+            <button onClick={() => dispatch(decrement())}>-1</button>
+            <button onClick={() => dispatch(addBy(5))}>+5</button>
+        </div>
+    );
 }

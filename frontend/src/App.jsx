@@ -114,27 +114,45 @@
 
 // using jotai
 
-import "./App.css";
+// import "./App.css";
+// import Counter from './components/Counter';
+// import Theme from './components/Theme';
+// import Reset from './components/Reset';
+
+// export default function App() {
+//   return (
+//     <div style={{ padding: 20, fontFamily: "system-ui, Arial" }}>
+//       <h2>Jotai: using Atoms</h2>
+
+//       <section style={{ border: "1px dashed #999", padding: 12, marginBottom: 20 }}>
+//         <Counter />
+//       </section>
+
+//       <section style={{ border: "1px dashed #999", padding: 12, marginBottom: 20 }}>
+//         <Theme />
+//       </section>
+
+//       <section style={{ border: "1px dashed #999", padding: 12 }}>
+//         <Reset />
+//       </section>
+//     </div>
+//   );
+// }
+
+
+//revising redux
+
 import Counter from './components/Counter';
 import Theme from './components/Theme';
 import Reset from './components/Reset';
 
 export default function App() {
-  return (
-    <div style={{ padding: 20, fontFamily: "system-ui, Arial" }}>
-      <h2>Jotai: using Atoms</h2>
-
-      <section style={{ border: "1px dashed #999", padding: 12, marginBottom: 20 }}>
-        <Counter />
-      </section>
-
-      <section style={{ border: "1px dashed #999", padding: 12, marginBottom: 20 }}>
-        <Theme />
-      </section>
-
-      <section style={{ border: "1px dashed #999", padding: 12 }}>
-        <Reset />
-      </section>
+  return(
+    <div style={{ padding: 20 }}>
+      <h1>Redux Toolkit Counter</h1>
+      <Counter />
+      <Theme />
+      <Reset />
     </div>
-  );
+  )
 }

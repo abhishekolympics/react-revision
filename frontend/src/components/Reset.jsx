@@ -43,27 +43,46 @@
 //using jotai
 
 
-import { useEffect } from "react";
-import { useAtom } from 'jotai';
-import { countAtom, themeAtom } from '../store/atoms';
+// import { useEffect } from "react";
+// import { useAtom } from 'jotai';
+// import { countAtom, themeAtom } from '../store/atoms';
+
+// export default function Reset() {
+
+//     const [theme, setTheme] = useAtom(themeAtom);
+//     const [count, setCount] = useAtom(countAtom);
+
+//     useEffect( ()=>{
+//         console.log('reset is re-rendered');
+//     }, [] );
+
+//     function reset() {
+//         setTheme('light');
+//         setCount(0);
+//     }
+
+//     return (
+//         <button onClick={reset}>
+//             RESET
+//         </button>
+//     )
+// }
+
+
+
+//revising redux
+
+import { useDispatch } from 'react-redux';
+import { resetCounter } from '../store/slices/counterSlice';
+import { resetTheme } from '../store/slices/themeSlice';
 
 export default function Reset() {
+    const dispatch = useDispatch();
 
-    const [theme, setTheme] = useAtom(themeAtom);
-    const [count, setCount] = useAtom(countAtom);
-
-    useEffect( ()=>{
-        console.log('reset is re-rendered');
-    }, [] );
-
-    function reset() {
-        setTheme('light');
-        setCount(0);
+    function handleReset() {
+        dispatch(resetCounter());
+        dispatch(resetTheme());
     }
 
-    return (
-        <button onClick={reset}>
-            RESET
-        </button>
-    )
+    return <button onClick={handleReset}>RESET</button>;
 }

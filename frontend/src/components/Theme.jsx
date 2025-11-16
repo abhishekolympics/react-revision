@@ -48,26 +48,44 @@
 
 
 //using jotai
-import { useEffect  } from "react";
-import { themeAtom } from '../store/atoms';
-import { useAtom } from 'jotai';
+// import { useEffect  } from "react";
+// import { themeAtom } from '../store/atoms';
+// import { useAtom } from 'jotai';
+
+// export default function Theme() {
+
+//     const [theme, setTheme] = useAtom(themeAtom);
+
+//     useEffect(() => {
+//         console.log("Theme re-rendered");
+//     }, [theme])
+
+//     return (
+//         <>
+//             <h1>
+//                 {theme}
+//             </h1>
+//             <button onClick={() => setTheme((theme) => theme!=='light'?'light':'dark')}>
+//                 Toggle Theme
+//             </button>
+//         </>
+//     )
+// }
+
+
+//revising Redux
+
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../store/slices/themeSlice';
 
 export default function Theme() {
-
-    const [theme, setTheme] = useAtom(themeAtom);
-
-    useEffect(() => {
-        console.log("Theme re-rendered");
-    }, [theme])
+    const theme = useSelector((state) => state.theme.mode);
+    const dispatch = useDispatch();
 
     return (
-        <>
-            <h1>
-                {theme}
-            </h1>
-            <button onClick={() => setTheme((theme) => theme!=='light'?'light':'dark')}>
-                Toggle Theme
-            </button>
-        </>
-    )
+        <div>
+            <h2>Theme: {theme}</h2>
+            <button onClick={() => dispatch(toggleTheme())}>Toggle Theme</button>
+        </div>
+    );
 }

@@ -45,11 +45,27 @@
 
 //below store is for redux
 
+// import { configureStore } from '@reduxjs/toolkit';
+// import counterReducer from './counterSlice';
+
+// export const store = configureStore({
+//   reducer: {
+//     counter: counterReducer,
+//   },
+// })
+
+
+//redux revision
+
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './counterSlice';
+import counterReducer from './slices/counterSlice';
+import themeReducer from './slices/themeSlice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    theme: themeReducer,
   },
-})
+});
+
+export default store; 
