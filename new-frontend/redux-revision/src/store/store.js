@@ -9,7 +9,7 @@ export const store = configureStore({
         counter: counterReducer,
         theme: themeReducer,
     },
-    // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger, threshold(10)),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger, threshold(10)),
 });
 
 export default store;
