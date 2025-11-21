@@ -142,7 +142,7 @@
 
 //revising redux
 
-import Counter from './components/Counter';
+import {Counter} from './components/Counter';
 import Theme from './components/Theme';
 import Reset from './components/Reset';
 
